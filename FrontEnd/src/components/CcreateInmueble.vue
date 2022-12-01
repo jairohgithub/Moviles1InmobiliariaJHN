@@ -7,7 +7,7 @@
         </div>
         <div class="imgprincipal">
           <img class="imginterna" src="../img/inmueble8.png" alt="No se encontró">
-        </div><br><br><br>
+        </div><br>
         <label for="cinmueble"><b></b></label>
         <input type="text" placeholder="Código Inmueble" name="cinmueble" id="cinmueble" v-model="cinmueble" required>
         <label for="tinmueble"><b></b></label>
@@ -21,7 +21,8 @@
         <input type="text" placeholder="Direccion Inmueble" name="direccion" id="direccion" v-model="direccion" required>
 
         <label for="especificaciones"><b></b></label>
-        <input type="text" placeholder="Especificaciones" name="especificaciones" id="especificaciones" v-model="especificaciones"><br><br>
+        <input type="text" placeholder="Especificaciones" name="especificaciones" id="especificaciones" v-model="especificaciones">
+        <br><br>
         <div class="img">
           <div class="imagenagregar">
             <img class="imgagrega" src="../img/agregarinmueble.png" alt="No se encontró">
@@ -80,9 +81,6 @@ a,
 p {
   color: #ffffff;
 }
-
-
-
 .enlac {
   color: #000000;
   height: 50px;
@@ -304,7 +302,7 @@ export default {
           if (Response.status)
             Swal.fire({
               icon: 'question',
-              title: 'Desea Registrar Usuario?',
+              title: 'Desea Registrar Inmueble?',
               showDenyButton: true,
               showCancelButton: false,
               confirmButtonText: 'Registrar',
@@ -326,7 +324,7 @@ export default {
           return "{\"sucess\":false ,\"message\":\"Error al intentar registrar.\"}";
         }
       })
-    },
+    }
     // BuscarInmueble() {
     //   var endpoint = "http://localhost:8080/inmueble/verinmueble/" + this.busqueda;
     //   var opciones = { method: "GET" };

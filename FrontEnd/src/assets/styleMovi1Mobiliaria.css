@@ -192,3 +192,7 @@ strong p.notienecuentap{
   .btn:hover {
     opacity: 1;
   }
+
+  div.imagenusuarioimg{
+    background-color: red;
+  }

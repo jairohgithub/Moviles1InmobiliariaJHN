@@ -11,6 +11,7 @@ import com.example.Proyecto_B1_Inmobiliaria.Modelo.RegistroInmuebleModelo;
 
 import com.example.Proyecto_B1_Inmobiliaria.Servicios.InmuebleServicio;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/inmueble")
+@CrossOrigin("*")
 public class InmuebleControlador {
     @Autowired
     InmuebleServicio servicio;

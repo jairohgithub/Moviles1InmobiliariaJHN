@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Proyecto_B1_Inmobiliaria.Modelo.InmobiliariaModeloUsuario;
-// import com.example.Proyecto_B1_Inmobiliaria.Modelo.UserModelo;
 import com.example.Proyecto_B1_Inmobiliaria.Repositorio.InmobiliariaRespositorio;
 
 @Service
@@ -16,19 +15,33 @@ public class InmobiliariaServiciosUsuario {
     @Autowired
     InmobiliariaRespositorio repositorio;
 
-    public InmobiliariaModeloUsuario GuardarUsuario(InmobiliariaModeloUsuario estudiante) {
-
-        return repositorio.save(estudiante);
+    public InmobiliariaModeloUsuario GuardarUsuario(InmobiliariaModeloUsuario usuario) {
+        return repositorio.save(usuario);
     }
 
     // public boolean LoginUser(UserModelo usuario) {
-    //     InmobiliariaModeloUsuario user = repositorio.findByUsuario(usuario);
-    //     return user != null;
+    // InmobiliariaModeloUsuario user = repositorio.findByUsuario(usuario);
+    // return user != null;
     // }
 
-    //  public boolean LoginUser(InmobiliariaModeloUsuario correo) {
-    //     InmobiliariaModeloUsuario user = repositorio.findBy(correo);
-    //     return user != null;
+    // public boolean LoginUser(InmobiliariaModeloUsuario correo) {
+    // InmobiliariaModeloUsuario user = repositorio.findBy(correo);
+    // return user != null;
+    // }
+
+    // public Optional<InmobiliariaModeloUsuario> LoginUser(String correo) {
+
+    // try {
+    // Optional<InmobiliariaModeloUsuario> user = repositorio.findByCorreo(correo);
+
+    // if (user.isEmpty())
+    // return null;
+    // else
+    // return user;
+
+    // } catch (Exception e) {
+    // return null;
+    // }
     // }
 
     public ArrayList<InmobiliariaModeloUsuario> VerUsuarios() {

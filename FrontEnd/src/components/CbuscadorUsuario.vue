@@ -11,29 +11,26 @@
                     <input type="text" placeholder="Número de Documento para Buscar" name="busqueda" id="busqueda"
                         v-model="busqueda" required>
 
-                    <label for="cedula"></label>{{ usuario.cedula }}
-                    <input type="text" placeholder="Número de Documento" name="cedula" id="cedula"  required><br>
+                    <label for="cedula"></label>
+                    <input type="text" placeholder="Número de Documento" name="cedula" id="cedula" v-model="usuario.cedula" required><br>
 
-                    <label for="nombre"><b></b></label>{{ usuario.nombre }}
-                    <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" 
+                    <label for="nombre"><b></b></label>
+                    <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" v-model= "usuario.nombre"
                         required>
                     <br>
-
-                    <label for="telefono"><b></b></label>{{ usuario.telefono }}
-                    <input type="text" placeholder="Telefono" name="telefono" id="telefono" 
+                    <label for="telefono"><b></b></label>
+                    <input type="text" placeholder="Telefono" name="telefono" id="telefono" v-model=" usuario.telefono " 
                         required><br>
 
-                    <label for="direccion"><b></b></label>{{ usuario.direccion }}
-                    <input type="text" placeholder="Direccion" name="direccion" id="direccion" 
+                    <label for="direccion"><b></b></label>
+                    <input type="text" placeholder="Direccion" name="direccion" id="direccion" v-model=" usuario.direccion "
                         required><br>
 
-                    <label for="email"><b></b></label>{{ usuario.correo }}
-                    <input type="email" placeholder="E-mail" name="email" id="correo"  required><br>
+                    <label for="email"><b></b></label>
+                    <input type="email" placeholder="E-mail" name="email" id="correo" v-model="usuario.correo " required><br>
 
                 </div>
             </form>
-
-
 
             <div class="imgusuario">
                 <div class="imagenagregar1">
@@ -247,18 +244,19 @@ input[type=passwordusuario]:focus {
 </style>
 
 <script>
-
+ 
 export default {
+   
     data() {
-        return {
+        return{
             busqueda: "",
-            usuario: "",
+            usuario: {},
             cedula: "",
             nombre: "",
             telefono: "",
             direccion: "",
             correo: "",
-            pass: "",
+            // pass: "",
 
             // datos: [],
 
@@ -304,9 +302,9 @@ export default {
         BuscarUsuario() {
             var endpoint = "http://localhost:8080/usuario/verusuario/" + this.busqueda;
             var opciones = { method: "GET" };
-            fetch(endpoint, opciones).then(async response => {
-                this.usuario = await response.json();
-            })
+            fetch(endpoint, opciones)
+            .then( response => response.json())
+            .then( data => {this.usuario = data; console.log(data)})    
         }
     }
     // ValidarUsuario() {

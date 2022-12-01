@@ -3,7 +3,7 @@
         <div class="bg-img">
             <form action="#" class="container">
                 <div class="tituloradio">
-                    <h1>Eliminar Usuario</h1>
+                    <h1>Actualizar Usuario</h1>
                     <div class="img">
                         <img class="imguser" src="../img/usuario.png" alt="No se encontró">
                     </div><br><br>
@@ -17,11 +17,11 @@
 
                     <label for="nombre"><b></b></label>
                     <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" v-model="usuario.nombre"
-                        required>
+                         required>
                     <br>
                     <label for="telefono"><b></b></label>
                     <input type="text" placeholder="Telefono" name="telefono" id="telefono" v-model="usuario.telefono"
-                        required><br>
+                       required><br>
 
                     <label for="direccion"><b></b></label>
                     <input type="text" placeholder="Direccion" name="direccion" id="direccion"
@@ -43,7 +43,7 @@
                 </div>
                 <div class="imagenagregar2">
                     <a><img class="imgclassusuario" src="../img/buscarUsuario.png" alt="No se encontró"
-                            v-on:click="BuscarUsuario"></a>
+                        v-on:click="BuscarUsuario"></a>
                 </div>
             </div>
 
@@ -51,11 +51,10 @@
             <div class="imgusuario">
                 <div class="imagenusuario">
                     <a><img class="imgclassusuario" src="../img/actualizarUsuario.png" alt="No se encontró"
-                            v-on:click=""></a>
+                            v-on:click="ActualizarUsuario"></a>
                 </div>
                 <div class="imagenusuario">
-                    <a><img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"
-                            v-on:click="EliminarUsuario"></a>
+                    <a><img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"></a>
                 </div>
             </div>
         </div>
@@ -313,18 +312,7 @@ export default {
             fetch(endpoint, opciones)
                 .then(response => response.json())
                 .then(data => { this.usuario = data; console.log(data) })
-        },
-
-        EliminarUsuario() {
-            var endpoint = "http://localhost:8080/usuario/eliminarusuario/" + this.busqueda;
-            var opciones = { method: "DELETE" };
-            fetch(endpoint, opciones)
-                .then(response => response.json())
-                .then(data => { this.usuario = data; console.log(data) })
-                alert("Usuario Eliminado con Exito");
         }
-    }
-}
 
         // ValidarUsuario() {
         //     var endpoint = "http://localhost:8080/usuario/login";
@@ -333,5 +321,6 @@ export default {
         //         headers: { "Content-type": "Application/json" },
         //         body: JSON.stringify({ email: this.email, pass: this.pass})
         //     }
-
+    }
+}
 </script>

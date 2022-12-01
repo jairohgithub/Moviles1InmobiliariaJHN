@@ -5,16 +5,24 @@ import Vcrearcuenta from '../views/Vcrearcuenta.vue'
 import Vbuscador from '../views/Vbuscador.vue'
 import VbuscarUsuario from '../views/VbuscarUsuario.vue'
 import Vcrearinmueble from '../views/Vcrearinmueble.vue'
+import actualizarUser from '../views/actualizarUser.vue'
+import VeliminarUsuario from '../views/VeliminarUsuario.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
-      name: 'Login',
-      component: VLogin
+      path: '/',
+      name: 'login',
+      component : VLogin
 
     },
+    // {
+    //   path: '/login',
+    //   name: 'Login',
+    //   component: VLogin
+
+    // },
 
     {
       path: '/cuenta',
@@ -40,9 +48,24 @@ const router = createRouter({
     {
       path: '/crearinmueble',
       name: 'Crearinmueble',
-      component: Vcrearinmueble
+      component: Vcrearinmueble          
 
     },
+
+    {
+      path: '/actualizarUser',
+      name: 'ActualizarUser',
+      component: actualizarUser         
+
+    },
+
+    {
+      path: '/eliminarUser',
+      name: 'EliminarUser',
+      component: VeliminarUsuario         
+
+    },
+
 
 
     {

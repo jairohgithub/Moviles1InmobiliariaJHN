@@ -38,18 +38,20 @@
                     <a><img class="imgclassusuario" src="../img/agragarUsuario.png" alt="No se encontró"
                             v-on:click="GuardarUsuario"></a>
                 </div>
-                <div class="imagenagregar2">
-                    <a><img class="imgclassusuario" src="../img/buscarUsuario.png" alt="No se encontró"><RouterLink to="/buscadorUsuario">Buscador Usuario</RouterLink></a>
+                <div class="imagenusuarioimg">
+                    <RouterLink to="/buscadorUsuario"><img class="imgclassusuario" src="../img/buscarUsuario.png"
+                            alt="No se encontró" v-on:click=""></RouterLink>
                 </div>
             </div>
 
-
             <div class="imgusuario">
                 <div class="imagenusuario">
-                    <a><img class="imgclassusuario" src="../img/actualizarUsuario.png" alt="No se encontró"></a>
+                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png"
+                            alt="No se encontró" v-on:click=""></RouterLink>
                 </div>
                 <div class="imagenusuario">
-                    <a><img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"></a>
+                    <RouterLink to="/eliminarUser"><img class="imgclassusuario" src="../img/eliminarUsuario.png"
+                            alt="No se encontró" v-on:click=""></RouterLink>
                 </div>
             </div>
         </div>
@@ -255,7 +257,7 @@ export default {
             direccion: "",
             correo: "",
             pass: "",
-                        
+
             // datos: [],
             // busqueda: "",
             // estudiante: "",
@@ -268,7 +270,7 @@ export default {
             var opciones = {
                 method: "POST",
                 headers: { "Content-type": "Application/json" },
-                body: JSON.stringify({ cedula: this.cedula, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion, correo: this.correo, pass: this.pass})
+                body: JSON.stringify({ cedula: this.cedula, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion, correo: this.correo, pass: this.pass })
             }
             fetch(endpoint, opciones).then(async Response => {
                 // alert('Guardado Correctamente');

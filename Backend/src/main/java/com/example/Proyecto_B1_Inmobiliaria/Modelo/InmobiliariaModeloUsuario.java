@@ -9,16 +9,17 @@ public class InmobiliariaModeloUsuario {
     private String direccion;
     private String correo;
     private String pass;
-    // private UserModelo usuario;
-    
-    public InmobiliariaModeloUsuario(int cedula, String nombre, String telefono, String direccion,  String correo, String pass) {
+
+    public InmobiliariaModeloUsuario() {
+    }
+    public InmobiliariaModeloUsuario(int cedula, String nombre, String telefono, String direccion, String correo,
+            String pass) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.correo=correo;
-        this.pass=pass;
-        // this.usuario = usuario;
+        this.correo = correo;
+        this.pass = pass;
     }
     public int getCedula() {
         return cedula;
@@ -44,16 +45,6 @@ public class InmobiliariaModeloUsuario {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    // public UserModelo getUsuario() {
-    //     return usuario;
-    // }
-    // public void setUsuario(UserModelo usuario) {
-    //     this.usuario = usuario;
-    // }   
-    // public UserModelo(String correo, String pass) {
-    //     this.correo = correo;
-    //     this.pass = pass;
-    // }
     public String getCorreo() {
         return correo;
     }
@@ -65,5 +56,5 @@ public class InmobiliariaModeloUsuario {
     }
     public void setPass(String pass) {
         this.pass = pass;
-    }
+    } 
 }
