@@ -11,10 +11,6 @@
                     <input type="text" placeholder="Número de Documento para Buscar" name="busqueda" id="busqueda"
                         v-model="busqueda" required>
 
-                    <label for="cedula"></label>
-                    <input type="text" placeholder="Número de Documento" name="cedula" id="cedula"
-                        v-model="usuario.cedula" required><br>
-
                     <label for="nombre"><b></b></label>
                     <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" v-model="usuario.nombre"
                         required>
@@ -39,23 +35,23 @@
             <br>
             <div class="imgusuario">
                 <div class="imagenagregar1">
-                    <a><img class="imgclassusuario" src="../img/agragarUsuario.png" alt="No se encontró"></a>
+                    <RouterLink to="/cuenta"><img class="imgclassusuario" src="../img/agragarUsuario.png" alt="No se encontró"></RouterLink>
                 </div>
                 <div class="imagenagregar2">
-                    <a><img class="imgclassusuario" src="../img/buscarUsuario.png" alt="No se encontró"
-                            v-on:click="BuscarUsuario"></a>
+                    <img class="imgclassusuario" src="../img/buscarUsuario.png" alt="No se encontró"
+                            v-on:click="BuscarUsuario">
                 </div>
             </div>
 
 
             <div class="imgusuario">
                 <div class="imagenusuario">
-                    <a><img class="imgclassusuario" src="../img/actualizarUsuario.png" alt="No se encontró"
-                            v-on:click=""></a>
+                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png" alt="No se encontró"
+                            v-on:click=""></RouterLink>
                 </div>
                 <div class="imagenusuario">
-                    <a><img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"
-                            v-on:click="EliminarUsuario"></a>
+                    <img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"
+                            v-on:click="EliminarUsuario">
                 </div>
             </div>
         </div>

@@ -3,54 +3,41 @@
         <div class="bg-img">
             <form action="#" class="container">
                 <div class="tituloradio">
-                    <h1>Registro Usuario</h1>
+                    <h1>Actualizar Contraseña</h1>
                     <div class="img">
                         <img class="imguser" src="../img/usuario.png" alt="No se encontró">
                     </div><br><br>
-                    <label for="cedula"><b></b></label>
-                    <input type="text" placeholder="Número de Documento" name="cedula" id="cedula" v-model="cedula"
-                        required />
+                    <label for="busqueda"><b></b></label>
+                    <input type="text" placeholder="Número de Documento para Buscar" name="busqueda" id="busqueda"
+                        v-model="busqueda" required>
 
-                    <label for="nombre"><b></b></label>
-                    <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" v-model="nombre"
-                        required /><br>
-
-                    <label for="telefono"><b></b></label>
-                    <input type="text" placeholder="Telefono" name="telefono" id="telefono" v-model="telefono"
+                    <label for="email"></label>
+                    <input type="email" placeholder="E-mail" name="email" id="correo" v-model="usuario.correo"
+                        required><br>
+                    <label for="pass"></label>
+                    <input type="password" placeholder="Nueva Contraseña" name="pass" id="pass" v-model="usuario.pass"
                         required><br>
 
-                    <label for="direccion"><b></b></label>
-                    <input type="text" placeholder="Direccion" name="direccion" id="direccion" v-model="direccion"
-                        required /><br>
-
-                    <label for="email"><b></b></label>
-                    <input type="email" placeholder="E-mail" name="email" id="correo" v-model="correo" required /><br>
-
-                    <label for="pass"><b></b></label>
-                    <input type="password" placeholder="Contraseña" name="pass" id="pass" v-model="pass" required /><br>
                 </div>
             </form>
-
-
-
-            <div class="imgusuario">
-                <div class="imagenagregar1">
-                    <a><img class="imgclassusuario" src="../img/agragarUsuario.png" alt="No se encontró"
-                            v-on:click="GuardarUsuario"></a>
-                </div>
-                <div class="imagenusuarioimg">
-                    <RouterLink to="/buscadorUsuario"><img class="imgclassusuario" src="../img/buscarUsuario.png"
+            <div class="imgusuariopass">
+                <div class="imagenagregar1pass">
+                    <RouterLink to="/cuenta"><img class="imgclassusuariopass" src="../img/agragarUsuario.png"
                             alt="No se encontró"></RouterLink>
+                </div>
+                <div class="imagenagregar2pass">
+                    <img class="imgclassusuariopass" src="../img/buscarUsuario.png" alt="No se encontró"
+                        v-on:click="BuscarUsuario">
                 </div>
             </div>
 
-            <div class="imgusuario">
-                <div class="imagenusuario">
-                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png"
-                            alt="No se encontró"></RouterLink>
+            <div class="imgusuariopass">
+                <div class="imagenusuariopass">
+                    <img class="imgclassusuariopass" src="../img/actualizarUsuario.png" alt="No se encontró"
+                        v-on:click="ActualizarContraseña">
                 </div>
-                <div class="imagenusuario">
-                    <RouterLink to="/eliminarUser"><img class="imgclassusuario" src="../img/eliminarUsuario.png"
+                <div class="imagenusuariopass">
+                    <RouterLink to="/eliminarUser"><img class="imgclassusuariopass" src="../img/eliminarUsuario.png"
                             alt="No se encontró"></RouterLink>
                 </div>
             </div>
@@ -70,22 +57,22 @@ body {
     height: 100%;
 }
 
-img.imguser {
+img.imguserpass {
     position: relative;
     right: -80px;
     top: 20px;
 }
 
-.imgusuario {
+.imgusuariopass {
     width: 100%;
     position: relative;
     display: flex;
-    top: 350px;
+    top: 300px;
     left: 70px;
     padding-left: 10px;
 }
 
-.imgclassusuario {
+.imgclassusuariopass {
     padding-left: 10px;
 }
 
@@ -249,24 +236,30 @@ input[type=passwordusuario]:focus {
 <script>
 
 export default {
+
     data() {
         return {
+            busqueda: "",
+            usuario: {},
             cedula: "",
             nombre: "",
             telefono: "",
             direccion: "",
             correo: "",
             pass: "",
+
+            // datos: [],
+
         }
     },
 
     methods: {
-        GuardarUsuario() {
+        ActualizarContraseña() {
             var endpoint = "http://localhost:8080/usuario/guardar";
             var opciones = {
                 method: "POST",
                 headers: { "Content-type": "Application/json" },
-                body: JSON.stringify({ cedula: this.cedula, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion, correo: this.correo, pass: this.pass })
+                body: JSON.stringify({ cedula: this.usuario.cedula, nombre: this.usuario.nombre, telefono: this.usuario.telefono, direccion: this.usuario.direccion, correo: this.usuario.correo, pass: this.usuario.pass })
             }
             fetch(endpoint, opciones).then(async Response => {
                 // alert('Guardado Correctamente');
@@ -274,18 +267,18 @@ export default {
                     if (Response.status)
                         Swal.fire({
                             icon: 'question',
-                            title: 'Desea Registrar Usuario?',
+                            title: 'Desea Actualizar Correo y Contraseña?',
                             showDenyButton: true,
                             showCancelButton: false,
-                            confirmButtonText: 'Registrar',
+                            confirmButtonText: 'Actualizar',
                             denyButtonText: `Cancelar`,
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                Swal.fire('Guardado con exito', '', 'success')
+                                Swal.fire('Actualizado con exito', '', 'success')
                                 this.$router.push('/');
 
                             } else if (result.isDenied) {
-                                Swal.fire('Los cambios no se guardaron', '', 'warning')
+                                Swal.fire('Los cambios no se Actualizaron', '', 'warning')
                                 return false
                             }
                         })
@@ -293,9 +286,16 @@ export default {
                         alert("error")
                     }
                 } catch (error) {
-                    return "{\"sucess\":false ,\"message\":\"Error al intentar registrar.\"}";
+                    return "{\"sucess\":false ,\"message\":\"Error al intentar actualizar.\"}";
                 }
             })
+        },
+        BuscarUsuario() {
+            var endpoint = "http://localhost:8080/usuario/verusuario/" + this.busqueda;
+            var opciones = { method: "GET" };
+            fetch(endpoint, opciones)
+                .then(response => response.json())
+                .then(data => { this.usuario = data; console.log(data) })
         }
     }
 }

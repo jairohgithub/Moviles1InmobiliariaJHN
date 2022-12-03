@@ -64,18 +64,29 @@ public class InmobiliariaControladorUsuario {
    // }
    // }
 
+   @GetMapping(path = "/login/{correo}/{pass}")
+   public ArrayList<InmobiliariaModeloUsuario> login(@PathVariable("correo") String correo, @PathVariable("pass") String pass) {
+      return servicio.Login(correo,pass);
+   }
+
    @GetMapping(path = "/ver")
    public ArrayList<InmobiliariaModeloUsuario> VerUsuario() {
       return servicio.VerUsuarios();
    }
 
    @GetMapping(path = "/verusuario/{cedula}")
-   public Optional<InmobiliariaModeloUsuario> VerUsuario(@PathVariable("cedula") int cedula) {
+   public Optional<InmobiliariaModeloUsuario> VerUsuario(@PathVariable("cedula") Long cedula) {
       return servicio.verUsuario(cedula);
    }
 
+   // @GetMapping(path = "/verusuario/{tinmueble}")
+   // public Optional<InmobiliariaModeloUsuario>
+   // VerTinmueble(@PathVariable("tinmueble") String tinmueble) {
+   // return servicio.verTinmueble(tinmueble);
+   // }
+
    @DeleteMapping(path = "/eliminarusuario/{cedula}")
-   public boolean EliminarUsuariio(@PathVariable("cedula") int cedula) {
+   public boolean EliminarUsuariio(@PathVariable("cedula") Long cedula) {
       return servicio.EliminarUser(cedula);
    }
 }

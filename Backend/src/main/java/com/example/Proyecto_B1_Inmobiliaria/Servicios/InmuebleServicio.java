@@ -24,11 +24,19 @@ public class InmuebleServicio{
         return (ArrayList<RegistroInmuebleModelo>) repositorio.findAll();
     }
 
-    public Optional<RegistroInmuebleModelo> verInmueble(int codigoinmueble){
+    public Optional<RegistroInmuebleModelo> verInmueble(Long codigoinmueble){
         return repositorio.findById(codigoinmueble);
     }
+    public ArrayList<RegistroInmuebleModelo> BuscarUbicacion(String tinmueble, String ubicacion){
+        ArrayList<RegistroInmuebleModelo> buscarUbicacion=repositorio.findByTinmuebleAndUbicacion(tinmueble,ubicacion);
+        return buscarUbicacion;
+     }
+    // public ArrayList<RegistroInmuebleModelo> verTinmueble(String tipoinmueble){
+    //     return repositorio.findByTinmueble(tipoinmueble);
+    // }
+    
 
-    public boolean EliminarInmueble(int codigoinmueble){
+    public boolean EliminarInmueble(Long codigoinmueble){
         if(repositorio.existsById(codigoinmueble)){
             repositorio.deleteById(codigoinmueble);
             return true;

@@ -12,14 +12,20 @@ import { RouterLink, RouterView } from 'vue-router'
 
       <nav>
         <RouterLink to="/">login</RouterLink>
+        <RouterLink to="/usuarios">Usuarios Registrados</RouterLink>
         <!-- <RouterLink to="/about">About</RouterLink> -->
         <!-- <RouterLink to="/login">Login</RouterLink> -->
         <RouterLink to="/cuenta">Registro Usuario</RouterLink>
-        <RouterLink to="/buscador">Buscador</RouterLink>
+        <RouterLink to="/pass">Recuperación de Contraseña</RouterLink>
+        <RouterLink to="/buscador">Inmuebles Registrados</RouterLink>
+        <RouterLink to="/busquedainmueble">Buscar Inmuble</RouterLink>
         <RouterLink to="/buscadorUsuario">Buscar Usuario</RouterLink>
-        <RouterLink to="/crearinmueble">Crear Inmueble</RouterLink>
         <RouterLink to="/actualizarUser">Actualizar Usuario</RouterLink>
         <RouterLink to="/eliminarUser">Eliminar Usuario</RouterLink>
+        <RouterLink to="/crearinmueble">Crear Inmueble</RouterLink>
+        <RouterLink to="/buscarinmueble">Buscar Inmueble</RouterLink>
+        <RouterLink to="/actualizarinmueble">Actualizar Inmueble</RouterLink>
+        <RouterLink to="/eliminarinmueble">Eliminar Inmueble</RouterLink>
       </nav>
     </div>
   </header>

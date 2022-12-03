@@ -42,7 +42,7 @@ strong p.notienecuentap{
     height: 50px;
     position: relative;
     width: 100%;
-    top: 10px;
+    top: 35px;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     border-radius: 30px;
@@ -195,4 +195,9 @@ strong p.notienecuentap{
 
   div.imagenusuarioimg{
     background-color: red;
+  }
+
+  button{
+    background-color: #0997F9;
+    top: -30px;
   }

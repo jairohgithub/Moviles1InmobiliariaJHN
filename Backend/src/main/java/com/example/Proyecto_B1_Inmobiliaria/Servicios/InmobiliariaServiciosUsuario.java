@@ -48,11 +48,16 @@ public class InmobiliariaServiciosUsuario {
         return (ArrayList<InmobiliariaModeloUsuario>) repositorio.findAll();
     }
 
-    public Optional<InmobiliariaModeloUsuario> verUsuario(int cedula) {
+    public ArrayList<InmobiliariaModeloUsuario> Login(String correo, String pass){
+       ArrayList<InmobiliariaModeloUsuario> login=repositorio.findByCorreoAndPass(correo,pass);
+       return login;
+    }
+
+    public Optional<InmobiliariaModeloUsuario> verUsuario(Long cedula) {
         return repositorio.findById(cedula);
     }
 
-    public boolean EliminarUser(int cedula) {
+    public boolean EliminarUser(Long cedula) {
         if (repositorio.existsById(cedula)) {
             repositorio.deleteById(cedula);
             return true;

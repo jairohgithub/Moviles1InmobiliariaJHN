@@ -37,13 +37,18 @@ public class InmuebleControlador {
        return servicio.VerInmuebles(); 
     }
 
+    @GetMapping(path = "/busquedainmueble/{tinmueble}/{ubicacion}")
+   public ArrayList<RegistroInmuebleModelo> login(@PathVariable("tinmueble") String tinmueble, @PathVariable("ubicacion") String ubicacion) {
+      return servicio.BuscarUbicacion(tinmueble,ubicacion);
+   }
+
     @GetMapping(path="/verinmueble/{codigoinmueble}")
-    public Optional<RegistroInmuebleModelo> VerInmueble(@PathVariable("codigoinmueble") int codigoinmueble) {  
+    public Optional<RegistroInmuebleModelo> VerInmueble(@PathVariable("codigoinmueble") Long codigoinmueble) {  
        return servicio.verInmueble(codigoinmueble); 
     }
 
     @DeleteMapping(path="/eliminarinmueble/{codigoinmueble}")
-    public boolean EliminarInmueble(@PathVariable("codigoinmueble") int codigoinmueble) {  
+    public boolean EliminarInmueble(@PathVariable("codigoinmueble") Long codigoinmueble) {  
        return servicio.EliminarInmueble(codigoinmueble); 
     }
 }

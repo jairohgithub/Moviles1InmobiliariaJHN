@@ -7,22 +7,27 @@ import VbuscarUsuario from '../views/VbuscarUsuario.vue'
 import Vcrearinmueble from '../views/Vcrearinmueble.vue'
 import actualizarUser from '../views/actualizarUser.vue'
 import VeliminarUsuario from '../views/VeliminarUsuario.vue'
-
+import Vbuscarinmueble from '../views/Vbuscarinmueble.vue'
+import Vactualizarinmueble from '../views/Vactualizarinmueble.vue'
+import Veliminarinmueble from '../views/Veliminarinmueble.vue'
+import Vusuarios from '../views/Vusuarios.vue'
+import Vpass from '../views/Vpass.vue'
+import Vbusquedainmueble from '../views/Vbusquedainmueble.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'login',
-      component : VLogin
+      component: VLogin
 
     },
-    // {
-    //   path: '/login',
-    //   name: 'Login',
-    //   component: VLogin
+    {
+      path: '/pass',
+      name: 'Pass',
+      component: Vpass
 
-    // },
+    },
 
     {
       path: '/cuenta',
@@ -39,6 +44,20 @@ const router = createRouter({
     },
 
     {
+      path: '/busquedainmueble',
+      name: 'BusquedaInmueble',
+      component: Vbusquedainmueble
+
+    },
+
+    {
+      path: '/usuarios',
+      name: 'Usuarios',
+      component: Vusuarios
+
+    },
+
+    {
       path: '/buscadorUsuario',
       name: 'BuscadorUsuario',
       component: VbuscarUsuario
@@ -48,26 +67,39 @@ const router = createRouter({
     {
       path: '/crearinmueble',
       name: 'Crearinmueble',
-      component: Vcrearinmueble          
+      component: Vcrearinmueble
 
     },
 
     {
       path: '/actualizarUser',
       name: 'ActualizarUser',
-      component: actualizarUser         
+      component: actualizarUser
 
     },
 
     {
       path: '/eliminarUser',
       name: 'EliminarUser',
-      component: VeliminarUsuario         
+      component: VeliminarUsuario
 
     },
+    {
+      path: '/buscarinmueble',
+      name: 'BuscarInmueble',
+      component: Vbuscarinmueble
 
-
-
+    },
+    {
+      path: '/actualizarinmueble',
+      name: 'ActualizarInmueble',
+      component: Vactualizarinmueble
+    },
+    {
+      path: '/eliminarinmueble',
+      name: 'EliminarInmueble',
+      component: Veliminarinmueble
+    },
     {
       path: '/',
       name: 'home',
