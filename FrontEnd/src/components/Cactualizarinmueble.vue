@@ -35,11 +35,12 @@
           <div class="imagenagregar">
             <div class="img">
               <div class="imagen">
-                <RouterLink to="/crearinmueble"><img class="imgclass" src="../img/crearInmueble.png" alt="No se encontró"></RouterLink>
+                <RouterLink to="/crearinmueble"><img class="imgclass" src="../img/crearInmueble.png"
+                    alt="No se encontró"></RouterLink>
               </div>
               <div class="imagen">
                 <img class="imgclass" src="../img/consultarinmueble.png" alt="No se encontró"
-                    v-on:click="BuscarInmueble">
+                  v-on:click="BuscarInmueble">
               </div>
             </div>
           </div>
@@ -48,10 +49,11 @@
           <div class="img">
             <div class="imagen">
               <img class="imgultim" src="../img/actualizarinmueble.png" alt="No se encontró"
-                  v-on:click="ActualizarInmueble">
+                v-on:click="ActualizarInmueble">
             </div>
             <div class="imagen">
-              <RouterLink to="/eliminarinmueble"><img class="imgultim" src="../img/eliminarinmueble.png" alt="No se encontró"></RouterLink>
+              <RouterLink to="/eliminarinmueble"><img class="imgultim" src="../img/eliminarinmueble.png"
+                  alt="No se encontró"></RouterLink>
             </div>
           </div>
         </div>
@@ -135,7 +137,7 @@ input[type=password] {
   padding: 15px;
   margin: 5px 0 2px 0;
   border: none;
- top: -25px;
+  top: -25px;
 }
 
 input[type=text]:focus,
@@ -241,7 +243,7 @@ export default {
             }).then((result) => {
               if (result.isConfirmed) {
                 Swal.fire('Actualizado con exito', '', 'success')
-                this.$router.push('/');
+                this.$router.push('/buscador');
 
               } else if (result.isDenied) {
                 Swal.fire('Los cambios no se Actualizaron', '', 'warning')
@@ -261,7 +263,28 @@ export default {
       var opciones = { method: "GET" };
       fetch(endpoint, opciones)
         .then(response => response.json())
-        .then(data => { this.inmueble = data; console.log(data) })
+        .then(data => {
+          this.inmueble = data; console.log(data)
+          if (this.inmueble != null) {
+            Swal.fire({
+              width: 300,
+              icon: 'success',
+              title: 'Existe',
+              text: "El Inmueble Existe",
+              showConfirmButton: false,
+              timer: 1000
+            })
+          } else {
+            Swal.fire({
+              width: 300,
+              icon: 'error',
+              title: 'Error Inmueble no encontrado',
+              text: "Inmueble no encontrado",
+              showConfirmButton: false,
+              timer: 1000
+            })
+          }
+        })
     }
   }
 }

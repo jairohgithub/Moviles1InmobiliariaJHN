@@ -25,32 +25,35 @@ public class InmobiliariaServiciosUsuario {
     // }
 
     // public boolean LoginUser(InmobiliariaModeloUsuario correo) {
-    // InmobiliariaModeloUsuario user = repositorio.findBy(correo);
+    // InmobiliariaModeloUsuario user =
+    // repositorio.findByCorreoAndPass(correo,pass)(correo);
     // return user != null;
     // }
 
-    // public Optional<InmobiliariaModeloUsuario> LoginUser(String correo) {
+    public ArrayList<InmobiliariaModeloUsuario> LoginUser(String correo, String pass) {
 
-    // try {
-    // Optional<InmobiliariaModeloUsuario> user = repositorio.findByCorreo(correo);
+        try {
+            ArrayList<InmobiliariaModeloUsuario> user = repositorio.findByCorreoAndPass(correo, pass);
 
-    // if (user.isEmpty())
-    // return null;
-    // else
-    // return user;
+            if (user != null) {
+                System.out.println(user);
+                return user;
+            } else {
+                return null;
+            }
 
-    // } catch (Exception e) {
-    // return null;
-    // }
-    // }
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public ArrayList<InmobiliariaModeloUsuario> VerUsuarios() {
         return (ArrayList<InmobiliariaModeloUsuario>) repositorio.findAll();
     }
 
-    public ArrayList<InmobiliariaModeloUsuario> Login(String correo, String pass){
-       ArrayList<InmobiliariaModeloUsuario> login=repositorio.findByCorreoAndPass(correo,pass);
-       return login;
+    public ArrayList<InmobiliariaModeloUsuario> Login(String correo, String pass) {
+        ArrayList<InmobiliariaModeloUsuario> login = repositorio.findByCorreoAndPass(correo, pass);
+        return login;
     }
 
     public Optional<InmobiliariaModeloUsuario> verUsuario(Long cedula) {

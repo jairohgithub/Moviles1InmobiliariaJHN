@@ -1,7 +1,7 @@
 <template>
   <div class="margen">
     <div class="bg-img">
-      <form action="#" class="container">
+      <form action="" method="GET" @submit.prevent="BuscadorInmuebles" class="container">
         <div class="tituloradio">
           <h1>Inmuebles Registrados</h1>
         </div>
@@ -14,8 +14,9 @@
         <input type="text" placeholder="Ubicación Inmueble" name="ubicacion" id="ubicacion" v-model="ubicacion"
           required> -->
         <br>
-        <button type="submit" name="buscar" id="buscar" v-on:click="BuscadorInmuebles">Registro de Inmuebles</button>
+        <button type="submit" name="buscar" id="buscar">Registro de Inmuebles</button>
         <div class="table-container">
+
           <table>
             <div id="div1" align="center">
               <table border="1">
@@ -40,7 +41,8 @@
             </div>
           </table>
         </div> <br>
-        <RouterLink to="/busquedainmueble"><button type="submit" name="buscar" id="buscar">Buscar Inmueble</button></RouterLink>
+        <RouterLink to="/busquedainmueble"><button type="submit" name="buscar" id="buscar">Buscar Inmueble</button>
+        </RouterLink>
       </form>
     </div>
   </div>

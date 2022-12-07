@@ -223,7 +223,29 @@ export default {
             var opciones = { method: "GET" };
             fetch(endpoint, opciones)
                 .then(response => response.json())
-                .then(data => { this.inmueble = data; console.log(data) })
+                .then(data => {
+                    this.inmueble = data; console.log(data)
+
+                    if (this.inmueble != null) {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'success',
+                            title: 'Existe',
+                            text: "El Inmueble Existe",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'error',
+                            title: 'Error Inmueble no encontrado',
+                            text: "Inmueble no encontrado",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
         },
         EliminarInmueble() {
             var endpoint = "http://localhost:8080/inmueble/eliminarinmueble/" + this.busqueda;
@@ -231,7 +253,26 @@ export default {
             fetch(endpoint, opciones)
                 .then(response => response.json())
                 .then(data => { this.inmueble = data; console.log(data) })
-            alert("Usuario Eliminado con Exito");
+            if (this.inmueble != null) {
+                Swal.fire({
+                    width: 300,
+                    icon: 'success',
+                    title: 'Inmueble Eliminado Correctamente',
+                    text: "=)",
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+            } else {
+                Swal.fire({
+                    width: 300,
+                    icon: 'error',
+                    title: 'Error al eliminar el Inmueble',
+                    text: "=)",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+            // alert("Usuario Eliminado con Exito");
         }
     }
 }

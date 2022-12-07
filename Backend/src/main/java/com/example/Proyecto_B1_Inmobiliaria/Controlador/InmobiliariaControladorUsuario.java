@@ -39,34 +39,32 @@ public class InmobiliariaControladorUsuario {
 
    // @PostMapping(value = "/login")
    // public String login(@RequestBody Map<String, String> data) {
-   // try {
-   // String correo = data.get("correo");
-   // String password = data.get("pass");
+   //    try {
+   //       String correo = data.get("correo");
+   //       String password = data.get("pass");
 
-   // Optional<InmobiliariaModeloUsuario> usuario = servicio.LoginUser(correo);
+   //       ArrayList<InmobiliariaModeloUsuario> usuario = servicio.LoginUser(correo, password);
 
-   // if (correo != "" & password != "") {
+   //       if (correo != "" & password != "") {
 
-   // if (usuario != null) {
-   // InmobiliariaModeloUsuario user = usuario.get();
-   // if (usuario != null && user.getPass().equals(password))
-   // return "{\"success\": true, \"message\": \"Login Correcto.\"}";
-   // else
-   // return "{\"success\": false, \"message\": \"Datos Incorrectos.\"}";
-   // } else
-   // return "{\"success\": false, \"message\": \"El usuario no existe.\"}";
-   // } else
-   // return "{\"success\": false, \"message\": \"Los campos no pueden estar
-   // vacíos.\"}";
-   // } catch (Exception e) {
-   // return "{\"success\": false, \"message\": \"Error de comunicación con el
-   // servidor.\"}";
-   // }
+   //          if (usuario != null) {
+   //             InmobiliariaModeloUsuario user = usuario.toString()
+   //             if (usuario != null && user.getPass().equals(password))
+   //                return "{\"success\": true, \"message\": \"Login Correcto.\"}";
+   //             else
+   //                return "{\"success\": false, \"message\": \"Datos Incorrectos.\"}";
+   //          } else
+   //             return "{\"success\": false, \"message\": \"El usuario no existe.\"}";
+   //       } else
+   //          return "Los campos no pueden estar vacíos.";
+   //    } catch (Exception e) {
+   //       return "Error de comunicación con el servidor.";
+   //    }
    // }
 
    @GetMapping(path = "/login/{correo}/{pass}")
-   public ArrayList<InmobiliariaModeloUsuario> login(@PathVariable("correo") String correo, @PathVariable("pass") String pass) {
-      return servicio.Login(correo,pass);
+   public ArrayList<InmobiliariaModeloUsuario> LoginUser(@PathVariable("correo") String correo, @PathVariable("pass") String pass) {
+   return servicio.Login(correo,pass);
    }
 
    @GetMapping(path = "/ver")

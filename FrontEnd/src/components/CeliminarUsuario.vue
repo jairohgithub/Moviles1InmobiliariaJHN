@@ -35,23 +35,24 @@
             <br>
             <div class="imgusuario">
                 <div class="imagenagregar1">
-                    <RouterLink to="/cuenta"><img class="imgclassusuario" src="../img/agragarUsuario.png" alt="No se encontró"></RouterLink>
+                    <RouterLink to="/cuenta"><img class="imgclassusuario" src="../img/agragarUsuario.png"
+                            alt="No se encontró"></RouterLink>
                 </div>
                 <div class="imagenagregar2">
                     <img class="imgclassusuario" src="../img/buscarUsuario.png" alt="No se encontró"
-                            v-on:click="BuscarUsuario">
+                        v-on:click="BuscarUsuario">
                 </div>
             </div>
 
 
             <div class="imgusuario">
                 <div class="imagenusuario">
-                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png" alt="No se encontró"
-                            v-on:click=""></RouterLink>
+                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png"
+                            alt="No se encontró" v-on:click=""></RouterLink>
                 </div>
                 <div class="imagenusuario">
                     <img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"
-                            v-on:click="EliminarUsuario">
+                        v-on:click="EliminarUsuario">
                 </div>
             </div>
         </div>
@@ -308,7 +309,28 @@ export default {
             var opciones = { method: "GET" };
             fetch(endpoint, opciones)
                 .then(response => response.json())
-                .then(data => { this.usuario = data; console.log(data) })
+                .then(data => {
+                    this.usuario = data; console.log(data)
+                    if (this.usuario != null) {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'success',
+                            title: 'Existe',
+                            text: "El Usuario Existe",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'error',
+                            title: 'Error Usuario no encontrado',
+                            text: "Usuario no encontrado",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
         },
 
         EliminarUsuario() {
@@ -316,8 +338,29 @@ export default {
             var opciones = { method: "DELETE" };
             fetch(endpoint, opciones)
                 .then(response => response.json())
-                .then(data => { this.usuario = data; console.log(data) })
-                alert("Usuario Eliminado con Exito");
+                .then(data => {
+                    this.usuario = data; console.log(data)
+
+                    if (this.usuario != null) {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'success',
+                            title: 'Usuario Eliminado Correctamente',
+                            text: "=)",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'error',
+                            title: 'Error al eliminar el Usuario',
+                            text: "=)",
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                })
         }
     }
 }

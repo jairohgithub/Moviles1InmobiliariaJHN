@@ -12,26 +12,28 @@
                         v-model="busqueda" required>
 
                     <label for="nombre"><b></b></label>
-                    <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" v-model= "usuario.nombre"
+                    <input type="text" placeholder="Nombre Completo" name="nombre" id="nombre" v-model="usuario.nombre"
                         required>
                     <br>
                     <label for="telefono"><b></b></label>
-                    <input type="text" placeholder="Telefono" name="telefono" id="telefono" v-model=" usuario.telefono " 
+                    <input type="text" placeholder="Telefono" name="telefono" id="telefono" v-model="usuario.telefono"
                         required><br>
 
                     <label for="direccion"><b></b></label>
-                    <input type="text" placeholder="Direccion" name="direccion" id="direccion" v-model=" usuario.direccion "
-                        required><br>
+                    <input type="text" placeholder="Direccion" name="direccion" id="direccion"
+                        v-model="usuario.direccion" required><br>
 
                     <label for="email"><b></b></label>
-                    <input type="email" placeholder="E-mail" name="email" id="correo" v-model="usuario.correo " required><br>
+                    <input type="email" placeholder="E-mail" name="email" id="correo" v-model="usuario.correo"
+                        required><br>
 
                 </div>
             </form>
 
             <div class="imgusuario">
                 <div class="imagenagregar1">
-                    <RouterLink to="/cuenta"><img class="imgclassusuario" src="../img/agragarUsuario.png" alt="No se encontró"></RouterLink>
+                    <RouterLink to="/cuenta"><img class="imgclassusuario" src="../img/agragarUsuario.png"
+                            alt="No se encontró"></RouterLink>
                 </div>
                 <div class="imagenagregar2">
                     <a><img class="imgclassusuario" src="../img/buscarUsuario.png" alt="No se encontró"
@@ -41,10 +43,12 @@
 
             <div class="imgusuario">
                 <div class="imagenusuario">
-                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png" alt="No se encontró"></RouterLink>
+                    <RouterLink to="/actualizarUser"><img class="imgclassusuario" src="../img/actualizarUsuario.png"
+                            alt="No se encontró"></RouterLink>
                 </div>
                 <div class="imagenusuario">
-                    <RouterLink to="/eliminarUser"><img class="imgclassusuario" src="../img/eliminarUsuario.png" alt="No se encontró"></RouterLink>
+                    <RouterLink to="/eliminarUser"><img class="imgclassusuario" src="../img/eliminarUsuario.png"
+                            alt="No se encontró"></RouterLink>
                 </div>
             </div>
         </div>
@@ -240,11 +244,11 @@ input[type=passwordusuario]:focus {
 </style>
 
 <script>
- 
+
 export default {
-   
+
     data() {
-        return{
+        return {
             busqueda: "",
             usuario: {},
             cedula: "",
@@ -299,8 +303,31 @@ export default {
             var endpoint = "http://localhost:8080/usuario/verusuario/" + this.busqueda;
             var opciones = { method: "GET" };
             fetch(endpoint, opciones)
-            .then( response => response.json())
-            .then( data => {this.usuario = data; console.log(data)})    
+                .then(response => response.json())
+                .then(data => {
+                    this.usuario = data; console.log(data)
+
+                    if (this.usuario != null) {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'success',
+                            title: 'Existe',
+                            text: "El Usuario Existe",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'error',
+                            title: 'Error Usuario no encontrado',
+                            text: "Usuario no encontrado",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+
+                })
         }
     }
     // ValidarUsuario() {

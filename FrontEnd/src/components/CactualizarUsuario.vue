@@ -308,7 +308,29 @@ export default {
             var opciones = { method: "GET" };
             fetch(endpoint, opciones)
                 .then(response => response.json())
-                .then(data => { this.usuario = data; console.log(data) })
+                .then(data => {
+                    this.usuario = data; console.log(data)
+
+                    if (this.usuario != null) {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'success',
+                            title: 'Existe',
+                            text: "El Usuario Existe",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            width: 300,
+                            icon: 'error',
+                            title: 'Error Usuario no encontrado',
+                            text: "Usuario no encontrado",
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
         }
 
         // ValidarUsuario() {

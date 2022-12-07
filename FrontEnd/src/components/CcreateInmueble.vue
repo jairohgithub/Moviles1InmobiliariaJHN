@@ -28,16 +28,16 @@
         <label for="especificaciones"><b></b></label>
         <input type="text" placeholder="Especificaciones" name="especificaciones" id="especificaciones"
           v-model="especificaciones">
-    
+
         <div class="img">
           <div class="imagenagregar">
             <div class="img">
               <div class="imagen">
-               <img class="imgclass" src="../img/crearInmueble.png" alt="No se encontró"
-                    v-on:click="GuardarInmueble">
+                <img class="imgclass" src="../img/crearInmueble.png" alt="No se encontró" v-on:click="GuardarInmueble">
               </div>
               <div class="imagen">
-                <RouterLink to="/buscarinmueble"><img class="imgclass" src="../img/consultarinmueble.png" alt="No se encontró"></RouterLink>
+                <RouterLink to="/buscarinmueble"><img class="imgclass" src="../img/consultarinmueble.png"
+                    alt="No se encontró"></RouterLink>
               </div>
             </div>
           </div>
@@ -45,10 +45,12 @@
         <div class="imagenultimo">
           <div class="img">
             <div class="imagen">
-              <RouterLink to="/actualizarinmueble"><img class="imgultim" src="../img/actualizarinmueble.png" alt="No se encontró"></RouterLink>
+              <RouterLink to="/actualizarinmueble"><img class="imgultim" src="../img/actualizarinmueble.png"
+                  alt="No se encontró"></RouterLink>
             </div>
             <div class="imagen">
-              <RouterLink to="/eliminarinmueble"><img class="imgultim" src="../img/eliminarinmueble.png" alt="No se encontró"></RouterLink>
+              <RouterLink to="/eliminarinmueble"><img class="imgultim" src="../img/eliminarinmueble.png"
+                  alt="No se encontró"></RouterLink>
             </div>
           </div>
         </div>
@@ -130,7 +132,7 @@ input[type=password] {
   padding: 15px;
   margin: 5px 0 2px 0;
   border: none;
-  top:-18px;
+  top: -18px;
 }
 
 input[type=text]:focus,
@@ -166,7 +168,7 @@ input[type=password]:focus {
   position: relative;
   width: 100%;
   left: 0px;
-  top:-12px;
+  top: -12px;
 }
 
 .imgultim {
@@ -223,10 +225,9 @@ export default {
             }).then((result) => {
               if (result.isConfirmed) {
                 Swal.fire('Guardado con exito', '', 'success')
-                this.$router.push('/');
-
+                this.$router.push('/buscador');
               } else if (result.isDenied) {
-                Swal.fire('Los cambios no se guardaron', '', 'warning')
+                Swal.fire('Error al guardar el inmueble', '', 'warning')
                 return false
               }
             })
